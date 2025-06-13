@@ -11,122 +11,120 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    /* KEY CHANGE: Background and Atmosphere */
     body {
-      /* A dark, somber background image. Replace the URL with your preferred image. */
-      /* You can find royalty-free images on unsplash.com, pexels.com */
       background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url(https://images.unsplash.com/photo-1591368037323-86854d6350d7?q=80&w=2070&auto=format&fit=crop);
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Keeps the background still on scroll */
-      color: #ddd; /* Softer white for better readability */
+      background-attachment: fixed;
+      color: #ddd;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 20px;
+      
+      /* --- KEY CHANGE --- */
+      /* Upar aur Niche ke ads ke liye jagah chhodna */
+      padding-top: 70px;    /* 50px ka top ad + 20px margin */
+      padding-bottom: 110px; /* 90px ka bottom ad + 20px margin */
+      padding-left: 20px;
+      padding-right: 20px;
     }
-
-    /* KEY CHANGE: Container styling for a serious tone */
     .container {
-      background: rgba(10, 10, 10, 0.6); /* Darker, more transparent */
-      border: 1px solid rgba(255, 0, 0, 0.3); /* Subtle red border */
-      box-shadow: 0 0 25px rgba(255, 0, 0, 0.2); /* Red glow effect */
+      background: rgba(10, 10, 10, 0.6);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
       border-radius: 15px;
       padding: 30px;
       max-width: 500px;
       width: 100%;
       text-align: center;
       backdrop-filter: blur(5px);
+      z-index: 10;
     }
-
-    /* KEY CHANGE: Pulsing, urgent headline */
     h1 {
       font-size: 32px;
       margin-bottom: 10px;
-      color: #e63946; /* A strong, alarming red color */
+      color: #e63946;
       text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
-      animation: pulse 2s infinite; /* Pulsing animation */
+      animation: pulse 2s infinite;
     }
-
-    /* Animation for the headline */
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
-      }
-      50% {
-        transform: scale(1.02);
-        text-shadow: 0 0 20px rgba(255, 50, 50, 1);
-      }
-      100% {
-        transform: scale(1);
-        text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
-      }
+      0% { transform: scale(1); text-shadow: 0 0 8px rgba(220, 50, 50, 0.7); }
+      50% { transform: scale(1.02); text-shadow: 0 0 20px rgba(255, 50, 50, 1); }
+      100% { transform: scale(1); text-shadow: 0 0 8px rgba(220, 50, 50, 0.7); }
     }
-
-    /* NEW: Sub-heading for more impact */
     .sub-heading {
-      font-size: 18px;
-      color: #ccc;
-      margin-bottom: 25px;
-      font-style: italic;
+      font-size: 18px; color: #ccc; margin-bottom: 25px; font-style: italic;
     }
-
     p {
-      font-size: 16px;
-      margin-bottom: 25px;
-      line-height: 1.6;
+      font-size: 16px; margin-bottom: 25px; line-height: 1.6;
     }
-
     .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      border: 2px solid #ffd700;
-      color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.3s ease;
-      background: transparent;
+      display: inline-block; padding: 12px 25px; border: 2px solid #ffd700;
+      color: #ffd700; text-decoration: none; font-weight: bold;
+      border-radius: 30px; overflow: hidden; position: relative;
+      transition: all 0.3s ease; background: transparent;
     }
     .btn::before {
-      content: "";
-      position: absolute;
-      background: #ffd700;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: -100%;
-      z-index: -1;
-      transition: all 0.3s ease;
+      content: ""; position: absolute; background: #ffd700; width: 100%;
+      height: 100%; top: 0; left: -100%; z-index: -1; transition: all 0.3s ease;
     }
-    .btn:hover::before {
-      left: 0;
-    }
-    .btn:hover {
-      color: #000;
-      border-color: #ffd700;
-    }
+    .btn:hover::before { left: 0; }
+    .btn:hover { color: #000; border-color: #ffd700; }
     .button-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px; /* Increased gap */
-      margin-top: 20px;
+      display: flex; flex-direction: column; gap: 15px; margin-top: 20px;
+    }
+    
+    /* --- NEW CSS FOR TOP AD --- */
+    .ad-banner-top {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 50px;
+      z-index: 1000;
+      max-width: 100%; /* Mobile par overflow rokne ke liye */
+    }
+    
+    /* --- UPDATED CSS FOR BOTTOM AD --- */
+    .ad-banner-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 728px;
+      height: 90px;
+      z-index: 1000;
+      max-width: 100%; /* Mobile par overflow rokne ke liye */
     }
   </style>
 </head>
 <body>
+
+  <!-- =============================== -->
+  <!-- ===== TOP AD BANNER (320x50) ===== -->
+  <!-- =============================== -->
+  <div class="ad-banner-top">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'd0a16598969cd4e938175761e553cfa4',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/d0a16598969cd4e938175761e553cfa4/invoke.js"></script>
+  </div>
+  
+  <!-- Page ka mukhya content -->
   <div class="container">
     <h1>ग़ज़ा इमरजेंसी राहत अभियान</h1>
     <p class="sub-heading">तत्काल सहायता की आवश्यकता</p>
     <p>2.3 मिलियन ग़ज़ा के लोग आपकी मदद की पुकार कर रहे हैं।<br>
     चलिए एक होकर इस संकट में उनकी सहायता करें।<br>
     "मुसलमान मुसलमान का भाई है; न उस पर ज़ुल्म करता है, न उसे अकेला छोड़ता है।"</p>
-
     <div class="button-group">
       <a href="https://ummetvakfi.org/proje/emergency-relief-campaign-gaza/285" class="btn" target="_blank" rel="noopener">डोनेट करें</a>
       <a href="https://www.facebook.com/ummetvakfi" class="btn" target="_blank" rel="noopener">Facebook पेज देखें</a>
@@ -135,17 +133,27 @@
     </div>
   </div>
 
+  <!-- =================================== -->
+  <!-- ===== BOTTOM AD BANNER (728x90) ===== -->
+  <!-- =================================== -->
+  <div class="ad-banner-bottom">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '90d9f37379f7893c876bbbb45cf112d5',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/90d9f37379f7893c876bbbb45cf112d5/invoke.js"></script>
+  </div>
+
   <script>
     document.querySelectorAll('.btn').forEach(button => {
-      button.addEventListener('mousedown', () => {
-        button.style.transform = 'scale(0.95)';
-      });
-      button.addEventListener('mouseup', () => {
-        button.style.transform = 'scale(1)';
-      });
-      button.addEventListener('mouseleave', () => {
-        button.style.transform = 'scale(1)';
-      });
+      button.addEventListener('mousedown', () => { button.style.transform = 'scale(0.95)'; });
+      button.addEventListener('mouseup', () => { button.style.transform = 'scale(1)'; });
+      button.addEventListener('mouseleave', () => { button.style.transform = 'scale(1)'; });
     });
   </script>
 </body>
