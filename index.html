@@ -4,70 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ग़ज़ा इमरजेंसी राहत अभियान</title>
-  <!-- Font Awesome Icons के लिए CDN लिंक -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    /* KEY CHANGE: Background and Atmosphere */
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      /* A dark, somber background image. Replace the URL with your preferred image. */
+      /* You can find royalty-free images on unsplash.com, pexels.com */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url(https://images.unsplash.com/photo-1591368037323-86854d6350d7?q=80&w=2070&auto=format&fit=crop);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Keeps the background still on scroll */
+      color: #ddd; /* Softer white for better readability */
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 20px;
     }
-    /* पेज लोड पर एनिमेशन के लिए Keyframes */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+
+    /* KEY CHANGE: Container styling for a serious tone */
     .container {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(10, 10, 10, 0.6); /* Darker, more transparent */
+      border: 1px solid rgba(255, 0, 0, 0.3); /* Subtle red border */
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.2); /* Red glow effect */
       border-radius: 15px;
-      padding: 30px 40px;
+      padding: 30px;
       max-width: 500px;
       width: 100%;
       text-align: center;
-      backdrop-filter: blur(10px);
-      /* कार्ड को उठाने के लिए Shadow */
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      /* होवर पर स्मूथ इफ़ेक्ट के लिए Transition */
-      transition: transform 0.3s ease;
-      /* पेज लोड एनिमेशन */
-      animation: fadeInUp 0.8s ease-out forwards;
+      backdrop-filter: blur(5px);
     }
-    .container:hover {
-      transform: translateY(-5px);
-    }
+
+    /* KEY CHANGE: Pulsing, urgent headline */
     h1 {
       font-size: 32px;
-      margin-bottom: 15px;
-      color: #ffd700;
-      font-weight: 600;
+      margin-bottom: 10px;
+      color: #e63946; /* A strong, alarming red color */
+      text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
+      animation: pulse 2s infinite; /* Pulsing animation */
     }
+
+    /* Animation for the headline */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
+      }
+      50% {
+        transform: scale(1.02);
+        text-shadow: 0 0 20px rgba(255, 50, 50, 1);
+      }
+      100% {
+        transform: scale(1);
+        text-shadow: 0 0 8px rgba(220, 50, 50, 0.7);
+      }
+    }
+
+    /* NEW: Sub-heading for more impact */
+    .sub-heading {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
     p {
       font-size: 16px;
       margin-bottom: 25px;
       line-height: 1.6;
     }
+
     .btn {
-      display: flex; /* आइकॉन और टेक्स्ट को अलाइन करने के लिए */
-      align-items: center;
-      justify-content: center;
-      gap: 10px; /* आइकॉन और टेक्स्ट के बीच गैप */
+      display: inline-block;
       padding: 12px 25px;
       border: 2px solid #ffd700;
       color: #ffd700;
@@ -77,10 +91,7 @@
       overflow: hidden;
       position: relative;
       transition: all 0.3s ease;
-      font-size: 16px;
-    }
-    .btn .fa-brands, .btn .fa-solid {
-      font-size: 18px;
+      background: transparent;
     }
     .btn::before {
       content: "";
@@ -91,55 +102,40 @@
       top: 0;
       left: -100%;
       z-index: -1;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
     }
     .btn:hover::before {
       left: 0;
     }
     .btn:hover {
-      color: #2c5364;
+      color: #000;
+      border-color: #ffd700;
     }
-    /* बटन के ग्रुप के लिए ग्रिड लेआउट */
     .button-group {
-      display: grid;
-      grid-template-columns: 1fr; /* मोबाइल पर एक कॉलम */
-      gap: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* Increased gap */
       margin-top: 20px;
-    }
-    /* बड़ी स्क्रीन के लिए 2 कॉलम ग्रिड */
-    @media (min-width: 576px) {
-      .button-group {
-        grid-template-columns: 1fr 1fr;
-      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>ग़ज़ा इमरजेंसी राहत अभियान</h1>
+    <p class="sub-heading">तत्काल सहायता की आवश्यकता</p>
     <p>2.3 मिलियन ग़ज़ा के लोग आपकी मदद की पुकार कर रहे हैं।<br>
     चलिए एक होकर इस संकट में उनकी सहायता करें।<br>
     "मुसलमान मुसलमान का भाई है; न उस पर ज़ुल्म करता है, न उसे अकेला छोड़ता है।"</p>
 
     <div class="button-group">
-      <!-- बटनों में आइकॉन जोड़े गए -->
-      <a href="https://ummetvakfi.org/proje/emergency-relief-campaign-gaza/285" class="btn" target="_blank" rel="noopener">
-        <i class="fa-solid fa-heart"></i> डोनेट करें
-      </a>
-      <a href="https://www.facebook.com/ummetvakfi" class="btn" target="_blank" rel="noopener">
-        <i class="fa-brands fa-facebook"></i> फेसबुक
-      </a>
-      <a href="https://api.whatsapp.com/send?text=ग़ज़ा%20इमरजेंसी%20राहत%20अभियान%20-%20डोनेट%20करें:%20https://ummetvakfi.org/proje/emergency-relief-campaign-gaza/285" class="btn" target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> व्हाट्सएप
-      </a>
-      <a href="https://t.me/share/url?url=https://ummetvakfi.org/proje/emergency-relief-campaign-gaza/285&text=ग़ज़ा%20इमरजेंसी%20राहत%20अभियान%20-%20डोनेट%20करें:" class="btn" target="_blank" rel="noopener">
-        <i class="fa-brands fa-telegram"></i> टेलीग्राम
-      </a>
+      <a href="https://ummetvakfi.org/proje/emergency-relief-campaign-gaza/285" class="btn" target="_blank" rel="noopener">डोनेट करें</a>
+      <a href="https://www.facebook.com/ummetvakfi" class="btn" target="_blank" rel="noopener">Facebook पेज देखें</a>
+      <a href="https://api.whatsapp.com/send?text=ग़ज़ा%20की%20मदद%20करें%20-%20इस%20लिंक%20को%20देखें:%20https://gaza-rouge.vercel.app/" class="btn" target="_blank" rel="noopener">WhatsApp पर शेयर करें</a>
+      <a href="https://t.me/share/url?url=https://gaza-rouge.vercel.app/&text=ग़ज़ा%20की%20मदद%20करें%20-%20इस%20लिंक%20को%20देखें:" class="btn" target="_blank" rel="noopener">Telegram पर शेयर करें</a>
     </div>
   </div>
 
   <script>
-    // जावास्क्रिप्ट में कोई बदलाव की जरूरत नहीं है, यह पहले से ही अच्छा है।
     document.querySelectorAll('.btn').forEach(button => {
       button.addEventListener('mousedown', () => {
         button.style.transform = 'scale(0.95)';
